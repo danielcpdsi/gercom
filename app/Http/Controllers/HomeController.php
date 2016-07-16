@@ -10,10 +10,18 @@ use Session;
 class HomeController extends Controller
 {
 
+	public function getHome(){
+
+		if(!Auth::check())
+		{
+			Session::flash('error','Você precisa estar logado para utilizar a aplicação');
+			return redirect()->action('HomeController@getLogin');
+		}
+	}
 	public function getLogin()
 	{
 
-		return('auth.login');
+		return view('auth.login');
 
 	}
 	public function postLogin(Request $request)
@@ -22,7 +30,7 @@ class HomeController extends Controller
         if(Auth::attempt(['user' => $request->user, 'password' => $request->pass]))
         {
 
-            echo "sucesso";
+            return view('home.home');
 
         }else
         {
@@ -35,13 +43,11 @@ class HomeController extends Controller
 	public function getLogout()
 	{
 
-		if(Auth::logout())
-		{
-			return view('auth.login');
-		}else{
-
-			return "errro";
+		Auth::logout();
+		if(!Auth::check()){
+		return redirect()->action('HomeController@getLogin');
 		}
+		
 
 	}
 }
