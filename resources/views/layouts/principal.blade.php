@@ -9,11 +9,13 @@
 
     <link rel="stylesheet" type="text/css" href="{{URL::asset('assets/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{URL::asset('assets/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('assets/css/animate.css')}}">
     <script type="text/javascript" src="{{URL::asset('assets/js/jquery-3.0.0.min.js')}}"></script>
     <script type="text/javascript" src="{{URL::asset('assets/js/jquery-3.0.0.min.js')}}"></script>
     
 
     <style>
+    
         @font-face {
             font-family: 'nevis';
             src: url({{URL::asset('assets/fonts/nevis.ttf')}});
@@ -25,6 +27,8 @@
     </style>
 </head>
 <body id="app-layout">
+
+
 
     @yield('content')
 
